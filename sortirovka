@@ -1,0 +1,24 @@
+int merge_sort(Table::elem *a, int l, int r) {
+  if(l==r) return 0;
+  int mid =(l+r)/2;
+  merge_sort(a,l,mid);
+  merge_sort(a,mid+1,r);
+  Table::elem * tmp;
+  int i=l;
+  int j;
+  j=mid+1;
+  tmp = new Table::elem[n];
+  for(int step=0; step<r-l+1; step++) 
+  {
+    if( (j>r) || ((i<= mid) && (a[i].year < a[j].year)) )
+     {
+      tmp[step]=a[i];
+      i++;
+    } else {
+      tmp[step]=a[j];
+      j++;
+    }
+  }
+  for(int step=0; step<r-l+1; step++)
+    a[l+step]=tmp[step];
+}
